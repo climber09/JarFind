@@ -8,6 +8,8 @@ Ok, let's say you compile the source and create an executable jar named jarfind.
 
     jar -cvfe ~/bin/jarfind.jar net/sourceforge/hunterj/jarfind/JarFind -C ./build net
 
+This command should create an executable ~/bin/jarfind.jar file.
+
 ### Usage
 
 For convenience, I like to invoke *JarFind* with a simple shell script like this:
