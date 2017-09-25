@@ -52,8 +52,9 @@ public class JarFind {
     }
     
     private static final String USAGE = 
-        "\nUSAGE: " + JarFind.class.getCanonicalName() + 
-            " [-DjarFind.jarEntryMatcher=my.custom.Matcher] <starting_dir>  <class_name_exp>";
+        "\nUSAGE: java [-DjarFind.jarEntryMatcher=my.custom.Matcher] " 
+        		+ JarFind.class.getCanonicalName() 
+        		+ " <starting_dir>  <class_name_exp>";
 
     /**
      * @param args
