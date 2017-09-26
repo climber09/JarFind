@@ -72,6 +72,8 @@ public class JarInspector extends SimpleFileVisitor<Path> {
                             System.out.println("\t".concat(entry.getName()));
                         }
                     }
+                }catch(IOException e) {
+                	System.err.printf("Warning: File: '%s' Message: '%s'\n", filePathStr, e.getMessage() );
                 }
             }
         }
