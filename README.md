@@ -1,7 +1,9 @@
 ## JarFind
 *JarFind* is a Java development tool. It's purpose is to quickly find jar files which contain a particular Java .class file. Sooner or later as a Java developer you get stymied by the ClassNotFoundException, which is usually thrown when the jvm cannot load a particular class which has been referenced within some running thread. So, if you don't know which jar file contains that particular class, and where that jar file is located, then you have a quest ahead of you.
 
-*JarFind* will find the jar for you. You just have to point it in the right direction. *JarFind* takes at least two arguments: a directory (in which to search) and a Java class name.
+*JarFind* will find the jar for you. You just have to point it in the right direction. *JarFind* takes at least two arguments: a directory under which to search and a Java class name to look for - not unlike the Unix/Linux *find* command.
+
+*JarFind* is completely unrelated to the *findjar.com* website. *JarFind* locates jar files accessible on your local file system only. I developed *JarFind* long before I came across *findjar.com*.
 
 ### Install
 Ok, let's say you compile the source and create an executable jar named jarfind.jar and put that somewhere convienient (like /opt/java/jarfind.jar or ~/bin/jarfind.jar). So, assuming you have the compiled code under ./build, you could do something like:
@@ -45,3 +47,18 @@ You can also customize the search by implementing your own net.sourceforge.hunte
 
 
     $ jarfind -DjarFind.jarEntryMatcher=my.brilliant.custom.Matcher ~/workspace TestCase
+
+Sometimes you will get multiple results.
+
+    $ jarfind ~/workspace TestCase
+
+    Looking for TestCase.class under /home/jim/workspace...
+
+    /home/jim/workspace/lib/junit-3.8.2.jar
+    	junit/framework/TestCase.class
+    /home/jim/workspace/lib/junit-4.8.2.jar
+    	junit/framework/TestCase.class
+    /home/jim/workspace/lib/junit-4.4.jar
+    	junit/framework/TestCase.class
+    /home/jim/workspace/JavaTest/lib/junit-4.12.jar
+    	junit/framework/TestCase.class
