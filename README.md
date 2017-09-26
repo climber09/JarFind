@@ -32,7 +32,7 @@ So if you save this shell script in the same directory as jarfind.jar just creat
 
     $ sudo ln -s ~/bin/jarfind.sh /usr/local/bin/jarfind
 
-Then simply invoke the link:
+Then simply invoke the link.
 
     $ jarfind
     USAGE: java [-DjarFind.jarEntryMatcher=my.custom.Matcher] net.sourceforge.hunterj.jarfind.JarFind <starting_dir>  <class_name_exp>
@@ -43,22 +43,23 @@ Then simply invoke the link:
     /home/jim/workspace/JavaTest/lib/junit-4.12.jar
     	junit/framework/TestCase.class
 
+*JarFind* will display the located jar file as well as the .class file found within that jar.
+
+Sometimes you may get multiple results, in which case you will need to manually select the right jar.
+
+    $ jarfind ~/workspace Document
+
+    Looking for Document.class under /home/jim/workspace...
+
+    /home/jim/workspace/lib/lucened.jar
+    	org/apache/lucene/document/Document.class
+    /home/jim/workspace/lib/Tidy.jar
+    	org/w3c/dom/Document.class
+    /home/jim/workspace/lib/jdom.jar
+    	org/jdom/Document.class
+
+
 You can also customize the search by implementing your own net.sourceforge.hunterj.jarfind.JarEntryMatcher. You then provide the fully qualified Java class name as a system property using the "-D" switch assigned to the "jarFind.jarEntryMatcher" property:
 
 
     $ jarfind -DjarFind.jarEntryMatcher=my.brilliant.custom.Matcher ~/workspace TestCase
-
-Sometimes you will get multiple results.
-
-    $ jarfind ~/workspace TestCase
-
-    Looking for TestCase.class under /home/jim/workspace...
-
-    /home/jim/workspace/lib/junit-3.8.2.jar
-    	junit/framework/TestCase.class
-    /home/jim/workspace/lib/junit-4.8.2.jar
-    	junit/framework/TestCase.class
-    /home/jim/workspace/lib/junit-4.4.jar
-    	junit/framework/TestCase.class
-    /home/jim/workspace/JavaTest/lib/junit-4.12.jar
-    	junit/framework/TestCase.class
