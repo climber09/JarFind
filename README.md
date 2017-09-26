@@ -12,8 +12,6 @@ Ok, let's say you compile the source and create an executable jar named jarfind.
 
 This command should create an executable ~/bin/jarfind.jar file. Alternatively, you can just run the ant build script (build.xml) included in this repository.
 
-### Usage
-
 For convenience, I like to invoke *JarFind* with a simple shell script like this:
 
     #!/usr/bin/env bash
@@ -34,6 +32,8 @@ So if you save this shell script in the same directory as jarfind.jar just creat
 
 Then simply invoke the link.
 
+### Usage
+
     $ jarfind
     USAGE: java [-DjarFind.jarEntryMatcher=my.custom.Matcher] net.sourceforge.hunterj.jarfind.JarFind <starting_dir>  <class_name_exp>
     $ jarfind ~/workspace TestCase
@@ -43,9 +43,9 @@ Then simply invoke the link.
     /home/jim/workspace/JavaTest/lib/junit-4.12.jar
     	junit/framework/TestCase.class
 
-*JarFind* will display the located jar file as well as the .class file found within that jar.
+*JarFind* will display the located jar file(s) as well as the .class file found within that jar.
 
-Sometimes you may get multiple results, in which case you will need to manually select the right jar.
+Sometimes you get multiple results, in which case you will need to manually select the right jar.
 
     $ jarfind ~/workspace Document
 
@@ -59,7 +59,9 @@ Sometimes you may get multiple results, in which case you will need to manually 
     	org/jdom/Document.class
 
 
-You can also customize the search by implementing your own net.sourceforge.hunterj.jarfind.JarEntryMatcher. You then provide the fully qualified Java class name as a system property using the "-D" switch assigned to the "jarFind.jarEntryMatcher" property:
+You can also customize the search by implementing your own *net.sourceforge.hunterj.jarfind.JarEntryMatcher*. You then provide the fully qualified Java class name as a system property using the "-D" switch assigned to the "jarFind.jarEntryMatcher" property:
 
 
     $ jarfind -DjarFind.jarEntryMatcher=my.brilliant.custom.Matcher ~/workspace TestCase
+
+You just need to make sure that your custom *JarEntryMatcher* class is on your Java classpath.
