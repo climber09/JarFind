@@ -8,7 +8,7 @@ Ok, let's say you compile the source and create an executable jar named jarfind.
 
     jar -cvfe ~/bin/jarfind.jar net/sourceforge/hunterj/jarfind/JarFind -C ./build net
 
-This command should create an executable ~/bin/jarfind.jar file.
+This command should create an executable ~/bin/jarfind.jar file. Alternatively, you can just run the ant build script (build.xml) included in this repository.
 
 ### Usage
 
