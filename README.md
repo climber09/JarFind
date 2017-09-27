@@ -26,7 +26,7 @@ For convenience, I like to invoke *JarFind* with a simple shell script like this
     fi
     exit 0
 
-So if you save this shell script in the same directory as jarfind.jar just created (say, ~/bin/jarfind.sh), you have a handy way of invoking *JarFind*. Better still, you can create a symbolic link to the script - something like:
+So if you save this shell script in the same directory as jarfind.jar - say, ~/bin/jarfind.sh - you have a handy way of invoking *JarFind*. Better still, you can create a symbolic link to the script - something like:
 
     $ sudo ln -s ~/bin/jarfind.sh /usr/local/bin/jarfind
 
