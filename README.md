@@ -6,7 +6,7 @@
 *JarFind* is completely unrelated to the *findjar.com* website. *JarFind* locates jar files accessible on your local file system only. I developed *JarFind* long before I came across *findjar.com*.
 
 ### Install
-Ok, let's say you compile the source and create an executable jar named jarfind.jar and put that somewhere convienient (like /opt/java/jarfind.jar or ~/bin/jarfind.jar). So, assuming you have the compiled code under ./build, you could do something like:
+Ok, let's say you compile the source and create an executable jar named jarfind.jar and put that somewhere convenient (like /opt/java/jarfind.jar or ~/bin/jarfind.jar). So, assuming you have the compiled code under ./build, you could do something like:
 
     jar -cvfe ~/bin/jarfind.jar net/sourceforge/hunterj/jarfind/JarFind -C ./build net
 
