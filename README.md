@@ -6,7 +6,7 @@
 *JarFind* is completely unrelated to the *findjar.com* website. *JarFind* locates jar files accessible on your local file system only. I developed *JarFind* long before I came across *findjar.com*.
 
 ### Install
-Ok, let's say you compile the source and create an executable jar named jarfind.jar and put that somewhere convenient (like /opt/java/jarfind.jar or ~/bin/jarfind.jar). So, assuming you have the compiled code under ./build, you could do something like:
+The rest of these instructions are geared for Linux/Unix based systems. If you're working on Windows, you're on your own.  Ok, let's say you want to compile the source and create an executable jar named jarfind.jar and put that somewhere convenient (like /opt/java/jarfind.jar or ~/bin/jarfind.jar). So, assuming you have the compiled code under ./build, you could do something like:
 
     $ jar -cvfe ~/bin/jarfind.jar net/sourceforge/hunterj/jarfind/JarFind -C ./build net
 
@@ -59,9 +59,12 @@ Sometimes you get multiple results, in which case you will need to manually sele
     	org/jdom/Document.class
 
 
-You can also customize the search by implementing your own *net.sourceforge.hunterj.jarfind.JarEntryMatcher*. You then provide the fully qualified Java class name as a system property using the "-D" switch assigned to the "jarFind.jarEntryMatcher" property:
+You can also customize the search by implementing your own *net.sourceforge.hunterj.jarfind.JarEntryMatcher*. You then provide the fully qualified Java class name of your custom matcher as a jvm system property using the standard "-D" option of the *java* command. The system property *JarFind* looks for is *"jarFind.jarEntryMatcher"*. So, for example if you have created an executable jar file, your command would look something like:
 
+    $ java -DjarFind.jarEntryMatcher=my.custom.Matcher -jar ~/bin/jarfind.jar ~/workspace TestCase
+
+If you use the script file above, and create a link to it, then your command would like something like:
 
     $ jarfind -DjarFind.jarEntryMatcher=my.brilliant.custom.Matcher ~/workspace TestCase
 
-You just need to make sure that your custom *JarEntryMatcher* class is on your Java classpath.
+You just need to make sure that your custom *matcher* class is on your Java classpath.
