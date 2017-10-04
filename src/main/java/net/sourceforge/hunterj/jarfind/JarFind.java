@@ -61,15 +61,15 @@ public class JarFind {
      */
     public static void main(String[] args) {
         
-        if (args.length < 2) {
+        if (args.length < 2 || args.length > 3) {
             System.out.println(USAGE);
             System.exit(1);
         }
         
-        String path = args[0];
-        String className = args[1];
+        String path = args[args.length-2];
+        String className = args[args.length-1];        
+        System.out.printf("\nLooking for %s.class under %s...\n\n", className, path);
         
-        System.out.println("\nLooking for " + className + ".class under " + path + "...\n");
         try {
             find(path, className);
         } 
