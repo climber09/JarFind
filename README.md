@@ -29,7 +29,7 @@ For convenience, I like to invoke *JarFind* with a simple shell script like this
         elif [[ $1 =~ ^-exec ]]; then
             EXEC_CMD=`echo $1 | sed "s/^-exec=\(.*\)$/-exec='\1'/"`
         else
-            SEARCH_ARGS="$SEARCH_ARGS '$1'"
+            SEARCH_ARGS="$SEARCH_ARGS $1"
         fi
         shift
     done
