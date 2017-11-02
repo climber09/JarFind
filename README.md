@@ -14,18 +14,29 @@ This command should create an executable ~/bin/jarfind.jar file. Alternatively, 
 
 For convenience, I like to invoke *JarFind* with a simple shell script like this:
 
+```bash
     #!/usr/bin/env bash
 
-    JARFIND_HOME=$(dirname $(readlink -f $0))
-    JARFIND_JAR="jarfind.jar"
+    JAR_HOME=$(dirname $(readlink -f $0))
+    JAR_NAME="jarfind.jar"
+    MATCHER=
+    SEARCH_ARGS=
+    EXEC_CMD=
 
-    if [ "$#" -eq 3 ]; then
-        java $1 -jar $JARFIND_HOME/$JARFIND_JAR $2 $3
-    else
-        java -jar $JARFIND_HOME/$JARFIND_JAR $1 $2
-    fi
+    while [ "$1" != "" ]; do
+        if [[ $1 =~ ^-D ]]; then
+            MATCHER=$1
+        elif [[ $1 =~ ^-exec ]]; then
+            EXEC_CMD=`echo $1 | sed "s/^-exec=\(.*\)$/-exec='\1'/"`
+        else
+            SEARCH_ARGS="$SEARCH_ARGS '$1'"
+        fi
+        shift
+    done
+
+    eval java $MATCHER -jar $JAR_HOME/$JAR_NAME $SEARCH_ARGS $EXEC_CMD
     exit 0
-
+```
 So if you save this shell script in the same directory as jarfind.jar - say, ~/bin/jarfind.sh - you have a handy way of invoking *JarFind*. Better still, you can create a symbolic link to the script - something like:
 
     $ sudo ln -s ~/bin/jarfind.sh /usr/local/bin/jarfind
@@ -59,6 +70,9 @@ Sometimes you get multiple results, in which case you will need to manually sele
     /home/jim/workspace/lib/jdom.jar
     	org/jdom/Document.class
 
+The <em>-exec</em> option is a useful feature. It works much like the Unix/Linux find command option of the same name. It enables a user supplied command to be executed with each search hit. So to copy the located jar files to some new directory, just do something like (note: the command portion needs to be quoted):
+
+    $ jarfind ~/workspace TestCase -exec='cp {} ~/workspace/NewLib'
 
 You can also customize the search by implementing your own *com.hunterjdev.jarfind.JarEntryMatcher*. You then provide the fully qualified Java class name as a system property using the "-D" switch assigned to the "jarFind.jarEntryMatcher" property:
 
