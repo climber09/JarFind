@@ -80,3 +80,5 @@ You can also customize the search by implementing your own *com.hunterjdev.jarfi
     $ jarfind -DjarFind.jarEntryMatcher=my.brilliant.custom.Matcher ~/workspace TestCase
 
 You just need to make sure that your custom *JarEntryMatcher* class is on your Java classpath.
+
+<div style="font-size: 0.85em;text-align:center;">Copyright &copy; 2017 James P Hunter</div>
