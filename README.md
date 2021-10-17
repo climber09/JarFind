@@ -1,4 +1,4 @@
-## JarFind
+# JarFind
 *JarFind* is a Java development tool. It's purpose is to quickly find jar files which contain a particular Java .class file. Sooner or later as a Java developer you get stymied by the ClassNotFoundException, which is usually thrown when the jvm cannot load a particular class which has been referenced within some running thread. So, if you don't know which jar file contains that particular class, and where that jar file is located, then you have a quest ahead of you.
 
 *JarFind* will find the jar for you. You just have to point it in the right direction. *JarFind* takes at least two arguments: a directory under which to search and a Java class name to look for - not unlike the Unix/Linux *find* command.
@@ -81,4 +81,5 @@ You can also customize the search by implementing your own *com.hunterjdev.jarfi
 
 You just need to make sure that your custom *JarEntryMatcher* class is on your Java classpath.
 
-<div style="font-size: 0.85em;text-align:center;">Copyright &copy; 2017 James P Hunter</div>
+---
+<sub>Copyright &copy; 2017 James P Hunter</sub>
